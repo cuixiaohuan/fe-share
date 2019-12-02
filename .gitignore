@@ -1,0 +1,6 @@
+sonar-project.properties
+.scannerwork
+.DS_Store
+node_modules/
+dist/
+_package.json

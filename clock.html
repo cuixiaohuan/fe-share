@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // function TreeNode(data) {
+    //   this.data = data
+    //   this.rchild = null
+    //   this.lchild = null
+    // }
+
+    class TreeNode {
+      constructor(data) {
+        this.data = data
+        this.rchild = null
+        this.lchild = null
+      }
+    }
+
+    function createTree() {
+      let tree = new TreeNode('AA')
+      tree.lchild = new TreeNode("BB")
+      tree.rchild = new TreeNode("CC")
+      tree.rchild.lchild = new TreeNode("DD")
+      tree.rchild.rchild = new TreeNode("EE")
+      tree.rchild.rchild.lchild = new TreeNode("FF")
+      tree.rchild.rchild.rchild = new TreeNode("GG")
+      return tree
+    }
+
+
+    // function qianxu(tree) {
+    //   if (tree == null) return
+    //   console.log(tree.data);
+    //   qianxu(tree.lchild)
+    //   qianxu(tree.rchild)
+    // }
+    // qianxu(createTree())
+
+    // function zhongxu(tree) {
+    //   if (tree == null) return
+    //   zhongxu(tree.lchild)
+    //   console.log(tree.data);
+    //   zhongxu(tree.rchild)
+    // }
+    // zhongxu(createTree())
+    function houxu(tree) {
+      if (tree == null) return
+      houxu(tree.lchild)
+      houxu(tree.rchild)
+      console.log(tree.data);
+    }
+    houxu(createTree())
+
+  </script>
+</body>
+</html>

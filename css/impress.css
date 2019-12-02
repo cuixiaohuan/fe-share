@@ -1,0 +1,465 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+	Font-family: "Microsoft YaHei", 微软雅黑, Tahoma,Arial,sans-serif;
+}
+.step {
+  opacity: 0.7;
+  transition: opacity 1s;
+}
+.step.active {
+	opacity: 1;
+	/* background-color: red; */
+}
+
+body {
+	font-family: 'PT Sans', sans-serif;
+	min-height: 740px;
+
+	background: #e2fcf9;
+
+	/* color: #ff4466; */
+
+	overflow: hidden !important;
+}
+
+@import url(fonts.css);
+
+/* code */
+#code {
+	background-color: #303030;
+	color: #fff;
+	font-size: 20px;
+	padding: 6px 10px;
+}
+/* return button */
+.return-button {
+	font-size: 24px;
+	line-height: 24px;
+	color: #AAA !important;
+	display: block;
+	border: 1px solid #AAA;
+	padding: 5px 10px;
+	border-radius: 5px;
+	position: absolute;
+	bottom:40px;
+	right: 0;
+}
+.return-button:hover {
+	color: #000 !important;
+	border: 1px solid #000;
+}
+/*
+    We display a fallback message for users with browsers that don't support
+    all the features required by it. All of the content will be still fully 
+    accessible for them, but some more advanced effects would be missing.
+    When impress.js detects that browser supports all necessary CSS3 features, 
+    the fallback-message style is hidden.
+*/
+
+.fallback-message {
+	font-family: sans-serif;
+	line-height: 1.3;
+
+	width: 780px;
+	padding: 10px 10px 0;
+	margin: 20px auto;
+
+	border: 1px solid #E4C652;
+	border-radius: 10px;
+	background: #EEDC94;
+}
+
+.fallback-message p {
+	margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+	display: none;
+}
+/* 删除线 */
+.bad-habit-title {
+	font-size: 40px;
+	font-weight: bold;
+	color: #9d3131;
+	line-height: 10px;
+	font-family: unset;
+	width: 260px;
+	position: absolute;
+	top: -33px;
+	left: -70px;
+
+	transform: rotate(-10deg);
+}
+.dd {
+  animation: shake 3s;
+}
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+		transform: rotate(-10deg);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+		transform: rotate(10deg);
+  }
+}
+.unadvisable {
+	position: relative;
+	display: inline-block;
+	opacity: 0.3;
+}
+.unadvisable::after {
+	content: '';
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	right: -36px;
+	top: -100px;
+	border: 20px solid red;
+	opacity: 0.3;
+	border-radius: 100%;
+}
+.unadvisable::before {
+	content: '';
+	height: 30px;
+	background-color: red;
+	position: absolute;
+	opacity: 0.3;
+	width: 300px;
+	height: 30px;
+	background-color: red;
+	position: absolute;
+	right: -14px;
+	top: 57px;
+	transform: rotate(45deg);
+}
+
+
+.loading{
+	top: 0;
+	background-color: #432;
+	z-index: 9999;
+	height: 5px;
+	position:fixed;
+
+}
+/*Top Header*/
+#top_header {
+	/*background: #f8f8f8;*/
+	/* height: 50px; */
+	/* border-top: 5px solid #3668c9; */
+	/* #D00505; */
+	margin: auto;
+	color: #032b6a;
+}
+#top_header .resume_name {
+	background: none repeat scroll 0 0 #e3e2e6;
+	font-weight: bold;
+	left: 0;
+	padding: 10px;
+	position: fixed;
+	top: 0;
+	width: auto;
+	text-align: center;
+	/* margin-top: 5px; */
+	padding-top: 5px;
+}
+#top_header .resume_name:hover {
+	background: none repeat scroll 0 0 #d6cafa;
+}
+
+#top_header .resume_name:hover a {
+	color: rgb(60, 0, 99);
+}
+#top_header .resume_name a {
+	color: #FFFFFF;
+	display: block;
+	margin: 0 10px;
+	text-decoration: none;
+}
+#top_header .top_menu {
+	float: right;
+	margin-right: 130px;
+}
+#top_header .top_menu ul li {
+	float: left;
+	display: block;
+	background: #000;
+	padding: 10px;
+}
+#top_header .top_menu ul li:hover {
+	cursor: hand;
+}
+#top_header .top_menu ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+#top_header .menu_highlight {
+	background: #3668c9 !important;
+	 /* #D00505 !important; */
+}
+/*Top Header End*/
+/*Step Common*/
+.panel {
+	font-size: 70px;
+	margin: 20px 0;
+	color: #000;
+	/* font-weight: bold; */
+	text-align: left;
+	padding-left: 40px;
+	line-height: 100px;
+	width: 1000px;
+	min-height: 500px;
+}
+.panel dt{
+	font-size: 35pt;
+}
+.panel dd{
+	font-size: 25pt;
+	line-height: 40px;
+}
+.panel em {
+	color: red;
+	font-style: normal;
+}
+.panel .tipimg img {
+	float: right;
+}
+.panel .titleimg {
+	float: left;
+	margin-left: 10px;
+}
+.panel .title {
+	font-weight: bolder;
+	font-size: 80px;
+	float: right;
+	margin: 160px 250px 0 0;
+}
+.panel a {
+	color: #395B91;
+	text-decoration: none;
+}
+.past .panel {
+	opacity: 0.1;
+}
+.future .panel {
+	opacity: 0;
+}
+.active .panel {
+	opacity: 1;
+	/*text-transform: uppercase;*/
+}
+/*Step Common End*/
+/*Landing Page*/
+/* .step {
+	position: relative;
+	display: block;
+
+	width: 900px;
+	height: 700px;
+	margin: 20px auto;
+	padding: 40px 60px;
+
+	text-shadow: 0 2px 2px rgba(0, 10, 0, .5);
+
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 30px;
+	letter-spacing: -1px;
+
+} */
+#landing_page {
+	width: 1100px;
+	float: left;
+	text-align: center;
+	font-size: 90px;
+	font-weight: bold;
+	line-height: 200px;
+}
+#landing_page .title1 img {
+	border-radius: 40px;
+	border: 10px solid #FFF;
+	vertical-align: top;
+	width: 700px;
+}
+#landing_page .title2 img {
+	margin-right: -25px;
+}
+/*Landing Page End*/
+/*Hint*/
+.hint {
+	 background: none repeat scroll 0 0 rgba(54, 104, 201, .898);
+    border-top: 3px solid #F8F8F8;
+    bottom: 0;
+    color: #FCFCFC;
+    display: none;
+    font-size: 30px;
+    left: 0;
+    opacity: 0;
+    outline: 1px solid #EEEEEE;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    transform: translateY(400px);
+    transition: opacity 1s ease 0s, transform 0.5s ease 1s;
+    z-index: 100;
+}
+.impress-enabled .hint {
+	display: block;
+}
+.impress-on-landing_page .hint {
+	opacity: 1;
+	transform: translateY(0px);
+	transition: opacity 1s ease 1s, transform 0.5s ease 1s;
+}
+/*Hint End*/
+/*About Me*/
+.panel .about_me_more {
+	margin-top: 30px;
+	font-size: 25pt;
+	line-height: 60px;
+}
+.panel .about_me_more p span:hover {
+	background-color: #82d6d3;
+	/* -webkit-border-radius: 20px;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius: 20px;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-bottomright: 6px; */
+	border-radius: 30px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.panel .about_me_more p:hover {
+	display: block;
+	transform: scale(1.06);
+}
+/*About Me End*/
+/*About Past*/
+#past_overview {
+	width: 1200px;
+}
+.past_item {
+	background: #f8f8f8;
+	height: 500px;
+	margin: 10px 30px;
+	width: 1100px;
+}
+.past_item .small {
+	display: none;
+}
+
+.past_item_left {
+	width: 650px;
+	float: left;
+	padding-top: 10px;
+}
+.past_item_left img {
+	border: 10px solid #FFF;
+	outline: 2px solid #cfcfcf;
+	margin: 20px;
+}
+.past_item_right {
+	width: 400px;
+	float: left;
+	margin: 30px 20px;
+}
+
+.past_item_title {
+	border-bottom: 5px solid #CD2828;
+	color: #000000;
+	font-size: 25px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+.past_item_title .emphasis {
+	color: red;
+	margin: 0px 10px;
+}
+.past_item_keys {
+	color: #395B91;
+	font-weight: bold;
+	width: auto;
+	height: auto;
+	text-align: left;
+}
+
+.past_item_desc {
+	font-weight: bold;
+	font-size: 20px;
+	color: #4B4A4A;
+	margin: 5px 0;
+	line-height: 30px;
+}
+.past_item_desc ul {
+	/*list-style-type: none;*/
+	padding-left: 20px;
+}
+.past_item_right .read_more {
+	margin-left: 20px;
+}
+/*About Past End*/
+/*Recently*/
+.recently_nodejs {
+	font-size: 55px;
+	width: inherit;
+	height: inherit;
+}
+.job_list {
+	margin: 0 auto;
+	font-size: 50px;
+	color: #000;
+	text-align: center;
+	font-weight: bold;
+}
+.job_list p {
+line-height: 60px;
+}
+.job_list .job_logo {
+	margin-top: 35px;
+	/*font-size: 70px;
+	 text-align: center;
+	 vertical-align: top;*/
+}
+
+/*Recently End*/
+
+.domain::before{
+	content: "\0040";
+}
+
+
+/******************* PLUGINS *************************************************************/
+/*
+  This version of impress.js supports plugins, and in particular, a UI toolbar
+  plugin that allows easy navigation between steps and autoplay.
+*/
+.impress-enabled div#impress-toolbar {
+	position: fixed;
+	right: 1px;
+	bottom: 1px;
+	opacity: 0.6;
+	z-index: 10;
+}
+.impress-enabled div#impress-toolbar > span {
+	margin-right: 10px;
+}
+
+/*
+	With help from the mouse-timeout plugin, we can hide the toolbar and
+	have it show only when you move/click/touch the mouse.
+*/
+body.impress-mouse-timeout div#impress-toolbar {
+	display: none;
+}
