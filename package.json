@@ -1,0 +1,36 @@
+{
+  "name": "fe-share",
+  "version": "1.0.0",
+  "description": "灵集内部分享",
+  "main": ".cz-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -x @commitlint/config-conventional -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuixiaohuan/fe-share.git"
+  },
+  "keywords": [
+    "share"
+  ],
+  "author": "cuixiaohuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuixiaohuan/fe-share/issues"
+  },
+  "homepage": "https://github.com/cuixiaohuan/fe-share#readme",
+  "devDependencies": {
+    "cz-customizable": "^6.2.0"
+  }
+}
