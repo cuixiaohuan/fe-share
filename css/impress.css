@@ -16,7 +16,9 @@ body {
 	font-family: 'PT Sans', sans-serif;
 	min-height: 740px;
 
-	background: #e2fcf9;
+	/* background: #e2fcf9; */
+	background-image: linear-gradient(#c1f5f8, #feeeee);
+	/* #c4c9ff */
 
 	/* color: #ff4466; */
 
@@ -51,9 +53,9 @@ body {
 }
 /*
     We display a fallback message for users with browsers that don't support
-    all the features required by it. All of the content will be still fully 
+    all the features required by it. All of the content will be still fully
     accessible for them, but some more advanced effects would be missing.
-    When impress.js detects that browser supports all necessary CSS3 features, 
+    When impress.js detects that browser supports all necessary CSS3 features,
     the fallback-message style is hidden.
 */
 
@@ -248,8 +250,9 @@ body {
 	color: #395B91;
 	text-decoration: none;
 }
+
 .past .panel {
-	opacity: 0.1;
+	opacity: 0.4;
 }
 .future .panel {
 	opacity: 0;

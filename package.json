@@ -4,7 +4,7 @@
   "description": "灵集内部分享",
   "main": ".cz-config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "open": "open index.html"
   },
   "config": {
     "commitizen": {

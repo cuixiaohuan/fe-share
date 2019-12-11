@@ -8,8 +8,9 @@ module.exports = {
     {value: '性能优化', name: '性能:  提升性能'}
   ],
   scopes: [
-    {name: '导航'},
-    {name: '主模块'}
+    {name: '主模块'},
+    {name: '配置'}
+
   ],
   scopeOverrides: {
     '修复问题': [

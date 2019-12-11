@@ -3,7 +3,7 @@
   The downside of this approach is that you have to be online. So below I have simply saved
   the output of the googleapis url into a file. Then you of course also have to make sure
   the webfonts are locally installed to make offline usage work. For Ubuntu (or Debian) I
-  successfully used the script from here to do that: 
+  successfully used the script from here to do that:
   http://www.webupd8.org/2011/01/automatically-install-all-google-web.html
 */
 
@@ -14,9 +14,9 @@
 
 /*
     We display a fallback message for users with browsers that don't support
-    all the features required by it. All of the content will be still fully 
+    all the features required by it. All of the content will be still fully
     accessible for them, but some more advanced effects would be missing.
-    When impress.js detects that browser supports all necessary CSS3 features, 
+    When impress.js detects that browser supports all necessary CSS3 features,
     the fallback-message style is hidden.
 */
 
@@ -88,7 +88,7 @@ body {
 .impress-enabled .step.active { opacity: 1 }
 
 /*
-    Speaker notes allow you to write comments within the steps, that will not 
+    Speaker notes allow you to write comments within the steps, that will not
     be displayed as part of the presentation. However, they will be picked up
     and displayed by impressConsole.js when integrated.
 */
@@ -97,8 +97,8 @@ body {
     display: none;
 }
 
-h1, 
-h2, 
+h1,
+h2,
 h3 {
     margin-bottom: 0.5em;
     margin-top: 0.5em;
@@ -111,7 +111,7 @@ p {
 }
 
 li {
-    margin: 0.2em;    
+    margin: 0.2em;
 }
 
 /* Highlight.js used for coloring pre > code blocks. */
@@ -147,11 +147,11 @@ a:focus {
 blockquote {
     font-family: 'PT Serif';
     font-style: italic;
-    font-weight: 400;    
+    font-weight: 400;
 }
 
 em {
-    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);    
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
 }
 
 strong {
@@ -161,7 +161,7 @@ strong {
 q {
     font-family: 'PT Serif';
     font-style: italic;
-    font-weight: 400;    
+    font-weight: 400;
     text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
 }
 
