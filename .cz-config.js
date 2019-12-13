@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   types: [
     {value: '添加新特性', name: '特性:  添加一个新的特性'},
