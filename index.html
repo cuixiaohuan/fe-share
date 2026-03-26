@@ -308,75 +308,99 @@
                     </div>
                 </div>
             </div>
-            <!-- 前端进阶阶段 -->
-            <div id="jieduan1" class="step" data-x="3000" data-y="2000" data-z="350" data-title="前端进阶的六个阶段-1">
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="recently_nodejs" style="background-image: url(img/htmls.jpg);background-repeat: no-repeat;background-position: right bottom;height: 500px;">
-                        <p><em>阶段一：</em></p>
-                        <p>能用html+css把页面做出来，能用JS实现动态效果，并且保证浏览器兼容性</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="jieduan2" class="step" data-x="3500" data-y="2000" data-z="0" data-rotate-y="90"  data-title="前端进阶的六个阶段-2">
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="job_list">
-                        <p><em>阶段二：</em>注意代码规范，代码风格趋于统一。</p>
-                        <!-- <div class="job_logo">
-                            <img src="img/ies.jpg" />
-                        </div> -->
-                        <div class="job_logo">
-                            <img src="img/codefun.jpg" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="jieduan3" class="step" data-x="3000" data-y="2500" data-z="0" data-rotate-x="-90" data-rotate-z="90" >
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="job_list">
-                        <p>
-                            <em>阶段三：</em>关注语义性、可重用性，抽取公共函数库
+            <!-- 前端进阶阶段 - 正方体六面布局，中心 (3000, 2000, 0)，半边长 500 -->
+            <!-- 正面 -->
+            <div id="jieduan1" class="step" data-x="3000" data-y="2000" data-z="500" data-title="进阶阶段一：基础实现">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">🌱</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段一</em>：基础实现</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            用 HTML + CSS 完整还原设计稿<br>
+                            用 JavaScript 实现动态交互效果<br>
+                            了解浏览器兼容性与 Polyfill<br>
+                            掌握 Chrome DevTools 调试技巧
                         </p>
-                        <div class="job_logo">
-                            <img src="img/shtml5.gif" />
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="jieduan4" class="step" data-x="3000" data-y="1500" data-z="0" data-rotate-x="90" data-rotate-z="-90" data-title="前端进阶的六个阶段-4">
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="job_list">
-                        <p>
-                            <em>阶段四：</em>开始关注页面性能
+            <!-- 右面 -->
+            <div id="jieduan2" class="step" data-x="3500" data-y="2000" data-z="0" data-rotate-y="90" data-title="进阶阶段二：规范养成">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">📋</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段二</em>：规范养成</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            代码风格统一，配置 ESLint + Prettier<br>
+                            Git 提交信息遵循 Conventional Commits<br>
+                            Code Review 中能给出有价值的意见<br>
+                            养成写注释和文档的习惯
                         </p>
-                        <div class="job_logo">
-                            <img src="img/per.png" />
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="jieduan5" class="step" data-x="2500" data-y="2000" data-z="0" data-rotate-y="-90" data-rotate-z="-180" data-title="前端进阶的六个阶段-5">
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="job_list">
-                        <p><em>阶段五：</em>在以上基础上开始关注开发效率</p>
-                        <div class="job_logo">
-                            <img src="img/effect.gif" />
-                        </div>
+            <!-- 背面 -->
+            <div id="jieduan3" class="step" data-x="3000" data-y="2000" data-z="-500" data-rotate-y="180" data-title="进阶阶段三：抽象复用">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">🧩</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段三</em>：抽象复用</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            关注语义性与可重用性<br>
+                            封装公共组件库与工具函数<br>
+                            理解设计模式（观察者、工厂等）<br>
+                            代码从"能用"走向"好用易维护"
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div id="jieduan6" class="step" data-x="3000" data-y="2000" data-z="-350" data-rotate-y="-180" data-rotate-z="-180" data-title="前端进阶的六个阶段-6">
-                <div class="panel" style="background: rgba(255,255,255,1); padding: 50px 30px; border-radius: 40px;box-shadow: rgba(255,255,255,1) 0 0 30 inset;">
-                    <div class="job_list">
-                        <p><em>阶段六：</em>学习MVC框架，社区热门框架、HTML5、css3等新技术……</p>
-                        <div class="job_logo">
-                            <img src="img/html5.gif" />
-                        </div>
+            <!-- 左面 -->
+            <div id="jieduan4" class="step" data-x="2500" data-y="2000" data-z="0" data-rotate-y="-90" data-title="进阶阶段四：性能意识">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">⚡</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段四</em>：性能意识</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            关注 LCP / FID / CLS 等 Web Vitals<br>
+                            掌握懒加载、CDN、HTTP 缓存策略<br>
+                            减少重排重绘，优化渲染链路<br>
+                            用 Lighthouse 量化性能瓶颈
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 顶面 -->
+            <div id="jieduan5" class="step" data-x="3000" data-y="1500" data-z="0" data-rotate-x="90" data-title="进阶阶段五：效率提升">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">🚀</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段五</em>：效率提升</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            搭建高效本地开发环境与脚手架<br>
+                            善用 AI 辅助工具（Cursor / Copilot）<br>
+                            自动化重复工作（脚本 / CI 流水线）<br>
+                            构建个人知识体系与技术雷达
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底面 -->
+            <div id="jieduan6" class="step" data-x="3000" data-y="2500" data-z="0" data-rotate-x="-90" data-title="进阶阶段六：技术深度">
+                <div class="panel" style="background: rgba(255,255,255,1); padding: 40px 50px; border-radius: 40px; box-sizing: border-box; height: 700px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 72px; margin-bottom: 16px;">🎯</p>
+                        <p style="font-size: 30px; font-weight: bold; color: #776860; margin-bottom: 24px;"><em>阶段六</em>：技术深度</p>
+                        <p style="font-size: 20px; line-height: 38px; color: #555;">
+                            深入掌握 Vue 3 / React + TypeScript<br>
+                            理解工程化、微前端与低代码架构<br>
+                            参与开源、输出技术文章与分享<br>
+                            从执行者成长为技术决策者
+                        </p>
                     </div>
                 </div>
             </div>
@@ -612,23 +636,110 @@
                 </div>
             </div>
 
-            <!-- 总结 -->
-            <div id="summary" class="step" data-x="13500" data-y="0" data-title="总结">
-                <div class="panel" style='background: rgba(255,255,255,0.5);padding: 40px; border-radius: 40px;'>
-                    <div class="about_me_more" style="font-size: 22px; line-height: 50px;">
-                        <p style="font-weight: bold; font-size: 32px; margin-bottom: 30px; text-align: center; color: #776860;">📌 今天分享了什么？</p>
-                        <p><span>1. 前端的定义、职责与学习路线</span></p>
-                        <p><span>2. 如何养成靠谱的前端工作习惯（规范、复用、优化）</span></p>
-                        <p><span>3. 前端进阶的六个阶段</span></p>
-                        <p><span>4. 现代前端技术生态（Vue 3 / React / TypeScript / Vite）</span></p>
-                        <p><span>5. 前端工程化：规范化、模块化、自动化、可观测性</span></p>
-                        <p><span>6. 前端安全：XSS / CSRF / 依赖漏洞防范</span></p>
-                        <p><span>7. AI 赋能开发：工具推荐与使用原则</span></p>
+            <!-- 前端测试体系 -->
+            <div id="testing" class="step" data-x="15000" data-y="0" data-title="前端测试体系">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p>前端<em>测试</em>体系建设</p>
                     </div>
                 </div>
             </div>
 
-            <div id="end" class="step" data-x="13500" data-y="1500" data-title="结语">
+            <div id="testing-pyramid" class="step" data-x="15000" data-y="1000" data-title="测试金字塔">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 42px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🧪 测试金字塔</p>
+                        <p><span>🔺 <strong>E2E 端到端测试</strong>（少量）— Playwright / Cypress</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">模拟真实用户操作，覆盖关键业务流程</p>
+                        <p><span>🔶 <strong>集成测试</strong>（适量）— Testing Library</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">测试组件与 API 的协作，验证页面行为</p>
+                        <p><span>🟩 <strong>单元测试</strong>（大量）— Vitest / Jest</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">测试纯函数、工具方法，运行快速、易维护</p>
+                        <p style="margin-top: 20px; font-size: 18px; color: #999; font-style: italic;">不要追求 100% 覆盖率，要测有价值的逻辑。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="testing-practice" class="step" data-x="15000" data-y="2000" data-title="测试最佳实践">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 44px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">✅ 前端测试最佳实践</p>
+                        <p><span>● 遵循 <strong>AAA 模式</strong>：Arrange（准备）→ Act（执行）→ Assert（断言）</span></p>
+                        <p><span>● 测试行为，而非实现细节（换一种写法，测试不应该挂掉）</span></p>
+                        <p><span>● Mock 外部依赖（接口、定时器），让测试稳定且快速</span></p>
+                        <p><span>● 每个测试只验证一件事，命名清晰："should [结果] when [条件]"</span></p>
+                        <p><span>● 测试代码与业务代码放在一起：<code>Button.vue</code> 旁放 <code>Button.spec.ts</code></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Web Vitals -->
+            <div id="cwv" class="step" data-x="16500" data-y="0" data-title="Core Web Vitals">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p><em>Core Web Vitals</em><br>性能指标体系</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cwv-detail" class="step" data-x="16500" data-y="1000" data-title="三大核心指标">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 46px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">📊 Google 三大核心指标</p>
+                        <p><span>🟢 <strong>LCP（最大内容绘制）</strong> — 衡量加载速度</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">目标：&lt; 2.5s | 优化：图片懒加载、CDN、预加载关键资源</p>
+                        <p><span>🟡 <strong>FID / INP（交互响应延迟）</strong> — 衡量交互流畅度</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">目标：INP &lt; 200ms | 优化：减少长任务、Web Worker 分流</p>
+                        <p><span>🔵 <strong>CLS（累积布局偏移）</strong> — 衡量视觉稳定性</span></p>
+                        <p style="padding-left: 30px; font-size: 18px; color: #666;">目标：&lt; 0.1 | 优化：预设图片尺寸、避免动态插入内容</p>
+                        <p style="margin-top: 16px; font-size: 18px; color: #999;">工具：Lighthouse、PageSpeed Insights、web-vitals.js</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 微前端架构 -->
+            <div id="micro-fe" class="step" data-x="16500" data-y="2000" data-title="微前端架构">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p><em>微前端</em>架构模式</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="micro-fe-detail" class="step" data-x="16500" data-y="3000" data-title="微前端详解">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 44px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🏢 什么是微前端？</p>
+                        <p><span>将一个大型前端应用拆分为多个独立子应用，由不同团队独立开发、部署。</span></p>
+                        <p style="margin-top: 16px;"><span>🛠️ <strong>主流方案</strong></span></p>
+                        <p style="padding-left: 20px;"><span>● <strong>qiankun</strong>（阿里）— 基于 single-spa，接入成本低</span></p>
+                        <p style="padding-left: 20px;"><span>● <strong>Module Federation</strong>（Webpack 5）— 模块共享，编译时集成</span></p>
+                        <p style="padding-left: 20px;"><span>● <strong>iframe</strong> — 最简单隔离，但通信和样式共享麻烦</span></p>
+                        <p style="margin-top: 10px;"><span>⚠️ <strong>适用场景</strong>：多团队协作的中大型平台，谨慎引入（有额外复杂度）</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 总结 -->
+            <div id="summary" class="step" data-x="18000" data-y="0" data-title="总结">
+                <div class="panel" style='background: rgba(255,255,255,0.5);padding: 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 20px; line-height: 46px;">
+                        <p style="font-weight: bold; font-size: 30px; margin-bottom: 24px; text-align: center; color: #776860;">📌 今天分享了什么？</p>
+                        <p><span>1. 前端的定义、职责与学习路线</span></p>
+                        <p><span>2. 如何养成靠谱的前端工作习惯（规范、复用、优化）</span></p>
+                        <p><span>3. 前端进阶的<strong>六个阶段</strong>（正方体展示）</span></p>
+                        <p><span>4. 现代前端技术生态（Vue 3 / React / TypeScript / Vite）</span></p>
+                        <p><span>5. 前端工程化：规范化、模块化、自动化、可观测性</span></p>
+                        <p><span>6. 前端安全：XSS / CSRF / CSP / 依赖漏洞防范</span></p>
+                        <p><span>7. AI 赋能开发：Cursor / Copilot / v0 使用原则</span></p>
+                        <p><span>8. 前端测试体系：单元 / 集成 / E2E 测试金字塔</span></p>
+                        <p><span>9. Core Web Vitals：LCP / INP / CLS 性能指标</span></p>
+                        <p><span>10. 微前端架构：qiankun / Module Federation</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="end" class="step" data-x="18000" data-y="1500" data-title="结语">
                 <div class="panel" style="text-align: center;">
                     <p style="font-size: 60px; font-weight: bold; margin-bottom: 40px;">🎉</p>
                     <p style="font-size: 42px; font-weight: bold; color: #776860; margin-bottom: 20px;">感谢聆听</p>
@@ -638,7 +749,7 @@
                 </div>
             </div>
 
-            <div id="overview" class="step" data-x="6500" data-y="1500" data-scale="16" style="pointer-events: none;">
+            <div id="overview" class="step" data-x="9000" data-y="1500" data-scale="22" style="pointer-events: none;">
 
             </div>
         </div>
