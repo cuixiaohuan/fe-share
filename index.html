@@ -467,15 +467,178 @@
                     <p> 2.git工具</p>
                 </div>
             </div> -->
-            <div class="step" data-x="6000" data-y="2000">
+            <!-- 现代前端技术栈 -->
+            <div id="modern-stack" class="step" data-x="7500" data-y="0" data-title="现代前端技术栈">
                 <div class="panel">
-                    over!
-                    <br/>
-                    thank you!
+                    <div class="recently_nodejs">
+                        <p>2026 年的前端<em>技术生态</em></p>
+                    </div>
                 </div>
             </div>
 
-            <div id="overview" class="step" data-x="3000" data-y="2000" data-scale="9" style="pointer-events: none;">
+            <div id="modern-stack-detail" class="step" data-x="7500" data-y="1000" data-title="现代前端框架">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 44px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">⚡ 主流框架与工具</p>
+                        <p><span>🟢 <strong>Vue 3</strong> — Composition API、`&lt;script setup&gt;`、Pinia 状态管理</span></p>
+                        <p><span>⚛️ <strong>React 19</strong> — Server Components、并发渲染、React Compiler</span></p>
+                        <p><span>🔷 <strong>TypeScript 5.x</strong> — 强类型、装饰器、satisfies 操作符</span></p>
+                        <p><span>⚡ <strong>Vite</strong> — 极速冷启动、模块热更新（HMR），取代 Webpack</span></p>
+                        <p><span>🎨 <strong>Tailwind CSS v4</strong> — 原子化 CSS，彻底告别手写样式</span></p>
+                        <p><span>📦 <strong>pnpm / Monorepo</strong> — 高效依赖管理，Turborepo 加速构建</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modern-stack-principle" class="step" data-x="7500" data-y="2000" data-title="技术选型原则">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 46px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🧭 技术选型原则</p>
+                        <p><span>● <strong>社区活跃度</strong>：关注 GitHub Star 趋势、npm 周下载量</span></p>
+                        <p><span>● <strong>团队熟悉度</strong>：优先选择团队已掌握的技术，降低风险</span></p>
+                        <p><span>● <strong>长期维护性</strong>：评估背后的企业/组织是否持续投入</span></p>
+                        <p><span>● <strong>生态完整性</strong>：工具链、文档、周边库是否成熟</span></p>
+                        <p><span>● <strong>按需引入</strong>：不要为了用新技术而用，解决实际问题才是目标</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 前端工程化 -->
+            <div id="engineering" class="step" data-x="9000" data-y="0" data-title="前端工程化">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p>前端<em>工程化</em>实践</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="engineering-detail" class="step" data-x="9000" data-y="1000" data-title="工程化体系">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 42px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🏗️ 工程化四大支柱</p>
+                        <p><span>📋 <strong>规范化</strong> — ESLint + Prettier + Stylelint + Husky + Commitlint</span></p>
+                        <p><span>📦 <strong>模块化</strong> — ES Modules、组件化开发、Tree Shaking</span></p>
+                        <p><span>🚀 <strong>自动化</strong> — CI/CD 流水线：代码检查 → 构建 → 测试 → 部署</span></p>
+                        <p><span>📊 <strong>可观测性</strong> — 错误监控（Sentry）、性能监控（Web Vitals）、日志上报</span></p>
+                        <p style="margin-top: 20px; font-size: 18px; color: #999;">工程化的目标：让团队协作更顺畅，让代码质量更稳定，让发布更安全可靠。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="engineering-cicd" class="step" data-x="9000" data-y="2000" data-title="CI/CD 流水线">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 46px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🔄 典型 CI/CD 流程</p>
+                        <p><span>1️⃣ <strong>代码提交</strong> — Pre-commit hook：格式检查、lint 校验</span></p>
+                        <p><span>2️⃣ <strong>代码审查</strong> — Pull Request / Code Review</span></p>
+                        <p><span>3️⃣ <strong>自动构建</strong> — 触发流水线：安装依赖 → 编译 → 单测</span></p>
+                        <p><span>4️⃣ <strong>自动部署</strong> — 测试环境自动发布，生产环境手动审批</span></p>
+                        <p><span>5️⃣ <strong>监控告警</strong> — 部署后监控错误率、性能指标，异常自动告警</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 前端安全 -->
+            <div id="security" class="step" data-x="10500" data-y="0" data-title="前端安全规范">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p>前端<em>安全</em>不可忽视</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="security-detail" class="step" data-x="10500" data-y="1000" data-title="常见安全威胁">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 42px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🔐 常见安全威胁与防御</p>
+                        <p><span>⚠️ <strong>XSS 跨站脚本攻击</strong></span></p>
+                        <p style="padding-left: 30px; font-size: 19px; color: #555;">防御：对用户输入进行转义；使用框架内置的模板绑定（Vue 的 v-html 慎用）</p>
+                        <p><span>⚠️ <strong>CSRF 跨站请求伪造</strong></span></p>
+                        <p style="padding-left: 30px; font-size: 19px; color: #555;">防御：接口使用 Token 校验；设置 Cookie 的 SameSite 属性</p>
+                        <p><span>⚠️ <strong>敏感数据泄露</strong></span></p>
+                        <p style="padding-left: 30px; font-size: 19px; color: #555;">防御：不在前端存储密钥；HTTPS 传输；LocalStorage 不存敏感信息</p>
+                        <p><span>⚠️ <strong>依赖包安全漏洞</strong></span></p>
+                        <p style="padding-left: 30px; font-size: 19px; color: #555;">防御：定期执行 npm audit；锁定依赖版本；使用 Dependabot</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="security-csp" class="step" data-x="10500" data-y="2000" data-title="内容安全策略">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 44px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🛡️ 前端安全最佳实践</p>
+                        <p><span>● 开启 <strong>CSP（内容安全策略）</strong>，限制脚本、样式的加载来源</span></p>
+                        <p><span>● 所有外链资源添加 <strong>SRI（子资源完整性）</strong> 校验</span></p>
+                        <p><span>● 接口请求统一走 HTTPS，禁止混合内容（Mixed Content）</span></p>
+                        <p><span>● 定期进行安全审计和渗透测试</span></p>
+                        <p><span>● 最小权限原则：前端只获取当前页面所需的数据</span></p>
+                        <p style="margin-top: 20px; font-size: 18px; color: #999; font-style: italic;">安全不是后端的专属，前端同样是攻击面的一部分。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI 赋能前端开发 -->
+            <div id="ai-dev" class="step" data-x="12000" data-y="0" data-title="AI 赋能前端开发">
+                <div class="panel">
+                    <div class="recently_nodejs">
+                        <p>拥抱 <em>AI</em>，提升开发效率</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ai-dev-tools" class="step" data-x="12000" data-y="1000" data-title="AI 开发工具">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 21px; line-height: 44px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">🤖 主流 AI 开发辅助工具</p>
+                        <p><span>🖱️ <strong>Cursor IDE</strong> — AI 原生编辑器，支持多文件理解与改写</span></p>
+                        <p><span>🐙 <strong>GitHub Copilot</strong> — 代码补全、测试生成、PR 描述自动生成</span></p>
+                        <p><span>💬 <strong>Claude / GPT-4o</strong> — 架构设计、代码审查、难题解答</span></p>
+                        <p><span>🔍 <strong>v0 / Bolt</strong> — 根据描述直接生成 UI 组件代码</span></p>
+                        <p><span>📝 <strong>AI Code Review</strong> — PR 自动扫描，指出潜在问题</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ai-dev-principle" class="step" data-x="12000" data-y="2000" data-title="AI 使用原则">
+                <div class="panel" style='background: rgba(255,255,255,0.4);padding: 30px 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 46px;">
+                        <p style="font-weight: bold; font-size: 26px; margin-bottom: 20px; color: #776860;">💡 高效使用 AI 的原则</p>
+                        <p><span>✅ <strong>提供充分上下文</strong> — 描述背景、约束和期望结果，而不只是问"怎么做"</span></p>
+                        <p><span>✅ <strong>批判性看待输出</strong> — AI 会"幻觉"，务必验证代码的正确性</span></p>
+                        <p><span>✅ <strong>用于提速，不用于替代思考</strong> — 理解生成的代码，保持对系统的掌控</span></p>
+                        <p><span>✅ <strong>注意数据安全</strong> — 公司敏感代码、密钥不要粘贴到公共 AI 工具</span></p>
+                        <p style="margin-top: 20px; font-size: 18px; color: #999; font-style: italic;">AI 是工具，用好工具的前提是你得先会干活。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 总结 -->
+            <div id="summary" class="step" data-x="13500" data-y="0" data-title="总结">
+                <div class="panel" style='background: rgba(255,255,255,0.5);padding: 40px; border-radius: 40px;'>
+                    <div class="about_me_more" style="font-size: 22px; line-height: 50px;">
+                        <p style="font-weight: bold; font-size: 32px; margin-bottom: 30px; text-align: center; color: #776860;">📌 今天分享了什么？</p>
+                        <p><span>1. 前端的定义、职责与学习路线</span></p>
+                        <p><span>2. 如何养成靠谱的前端工作习惯（规范、复用、优化）</span></p>
+                        <p><span>3. 前端进阶的六个阶段</span></p>
+                        <p><span>4. 现代前端技术生态（Vue 3 / React / TypeScript / Vite）</span></p>
+                        <p><span>5. 前端工程化：规范化、模块化、自动化、可观测性</span></p>
+                        <p><span>6. 前端安全：XSS / CSRF / 依赖漏洞防范</span></p>
+                        <p><span>7. AI 赋能开发：工具推荐与使用原则</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="end" class="step" data-x="13500" data-y="1500" data-title="结语">
+                <div class="panel" style="text-align: center;">
+                    <p style="font-size: 60px; font-weight: bold; margin-bottom: 40px;">🎉</p>
+                    <p style="font-size: 42px; font-weight: bold; color: #776860; margin-bottom: 20px;">感谢聆听</p>
+                    <p style="font-size: 24px; color: #999; line-height: 40px;">持续学习，拥抱变化</p>
+                    <p style="font-size: 24px; color: #999; line-height: 40px;">做一个有<em>工匠精神</em>的前端工程师</p>
+                    <p style="font-size: 18px; color: #bbb; margin-top: 40px;">— 灵集前端团队</p>
+                </div>
+            </div>
+
+            <div id="overview" class="step" data-x="6500" data-y="1500" data-scale="16" style="pointer-events: none;">
 
             </div>
         </div>
