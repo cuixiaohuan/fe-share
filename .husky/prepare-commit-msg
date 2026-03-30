@@ -7,12 +7,12 @@ COMMIT_MSG_FILE=$1
 BRANCH_NAME=$(git branch --show-current)
 
 # 使用正则提取分支名中的 Ticket ID (匹配大写字母+横杠+数字，如 PROJ-123)
-TICKET_ID=$(echo "$BRANCH_NAME" | grep -oE '[A-Z]+-[0-9]+')
+TICKET_ID=$(echo "$BRANCH_NAME" | awk -F'_' '{print $NF}')
 
 # 如果成功提取到了 Ticket ID
 if [ -n "$TICKET_ID" ]; then
   # 系统地址
-  TICKET_URL="https://carsome.atlassian.net/browse/RC-3112"
+  TICKET_URL="https://carsome.atlassian.net/browse/BRO=$TICKET_ID"
   
   
   # 在原有的 commit message 底部空一行，并追加 Ticket 链接
