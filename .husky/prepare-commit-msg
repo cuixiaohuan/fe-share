@@ -1,0 +1,21 @@
+
+#!/bin/sh
+
+# $1 是包含了当前 commit message 的临时文件路径
+COMMIT_MSG_FILE=$1
+# 获取当前所处的分支名 (例如: feat/PROJ-123-login)
+BRANCH_NAME=$(git branch --show-current)
+
+# 使用正则提取分支名中的 Ticket ID (匹配大写字母+横杠+数字，如 PROJ-123)
+TICKET_ID=$(echo "$BRANCH_NAME" | grep -oE '[A-Z]+-[0-9]+')
+
+# 如果成功提取到了 Ticket ID
+if [ -n "$TICKET_ID" ]; then
+  # 系统地址
+  TICKET_URL="https://carsome.atlassian.net/browse/RC-3112"
+  
+  
+  # 在原有的 commit message 底部空一行，并追加 Ticket 链接
+  echo "" >> "$COMMIT_MSG_FILE"
+  echo "Ticket URL: $TICKET_URL" >> "$COMMIT_MSG_FILE"
+fi

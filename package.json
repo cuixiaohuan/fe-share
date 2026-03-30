@@ -4,7 +4,9 @@
   "description": "灵集内部分享",
   "main": ".cz-config.js",
   "scripts": {
-    "open": "open index.html"
+    "test": "",
+    "open": "open index.html",
+    "prepare": "husky"
   },
   "config": {
     "commitizen": {
@@ -31,6 +33,7 @@
   },
   "homepage": "https://github.com/cuixiaohuan/fe-share#readme",
   "devDependencies": {
-    "cz-customizable": "^6.2.0"
+    "cz-customizable": "^6.2.0",
+    "husky": "^9.1.7"
   }
 }
