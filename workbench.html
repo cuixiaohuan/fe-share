@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工作台 · 灵集前端</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Backgrounds — subtle indigo tint vs pure GitHub gray */
+            --bg:          oklch(9.5% 0.025 272);
+            --bg-card:     oklch(12.5% 0.03 272);
+            --bg-input:    oklch(9.5% 0.025 272);
+
+            /* Borders — indigo-tinted instead of pure gray */
+            --border:      oklch(24.5% 0.04 272);
+            --border-focus:#6366f1;
+
+            /* Text — muted gets a hint of indigo warmth */
+            --text:        #e6edf3;
+            --text-muted:  oklch(60% 0.04 272);
+
+            /* Primary indigo palette */
+            --primary:     #6366f1;
+            --primary-dim: rgba(99,102,241,.15);
+            --primary-glow: rgba(99,102,241,.07);
+
+            /* Violet — secondary accent */
+            --violet:      #8b5cf6;
+            --violet-dim:  rgba(139,92,246,.12);
+
+            /* Semantic */
+            --success:     #3fb950;
+            --success-dim: rgba(63,185,80,.12);
+            --branch:      #3da778;
+            --warning:     #d29922;
+            --error:       #f85149;
+            --error-dim:   rgba(248,81,73,.12);
+            --radius:      10px;
+
+            /* Spacing scale */
+            --space-xs:   6px;
+            --space-sm:   12px;
+            --space-md:   20px;
+            --space-lg:   32px;
+            --space-xl:   48px;
+            --space-2xl:  72px;
+
+            /* Type scale — rem-based for UI app */
+            --text-xs:   0.6875rem;  /* 11px — chip, badge */
+            --text-sm:   0.75rem;    /* 12px — hints, timestamps */
+            --text-base: 0.875rem;   /* 14px — primary body, buttons */
+            --text-md:   0.9375rem;  /* 15px — hero sub, secondary */
+            --text-lg:   1rem;       /* 16px — nav brand */
+            --text-xl:   1.0625rem;  /* 17px — modal title */
+
+            /* Easing curves */
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Space Grotesk', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', -apple-system, sans-serif;
+            background:
+                radial-gradient(ellipse 90% 40% at 50% -5%, var(--primary-glow) 0%, transparent 70%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ═══ Header ═══ */
+        .header {
+            background: oklch(12.5% 0.03 272 / 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: var(--text-lg);
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .header-brand svg { flex-shrink: 0; }
+
+        .badge {
+            background: var(--primary-dim);
+            color: var(--primary);
+            border: 1px solid rgba(99,102,241,.4);
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: var(--text-xs);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+
+        .btn-ghost {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: var(--text-base);
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: border-color .2s, color .2s;
+        }
+
+        .btn-ghost:hover { border-color: rgba(99,102,241,.6); color: var(--primary); }
+
+        /* ═══ Layout ═══ */
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: clamp(32px, 5vw, 52px) clamp(16px, 4vw, 32px) clamp(64px, 8vw, 96px);
+        }
+
+        .hero {
+            margin-bottom: 44px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(90deg, rgba(99,102,241,.55) 0%, rgba(139,92,246,.25) 45%, transparent 100%) 1;
+        }
+
+        .hero-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 700;
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -.5px;
+            line-height: 1.2;
+        }
+
+        .hero-sub { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+        /* ═══ Task flow group ═══ */
+        .task-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: var(--space-xl);
+        }
+
+        /* ═══ History section ═══ */
+        .history-section {
+            position: relative;
+            padding-top: 4px;
+        }
+
+        .history-section::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(99,102,241,.4) 0%, rgba(139,92,246,.18) 40%, transparent 100%);
+            margin-bottom: 36px;
+        }
+
+        /* ═══ Card ═══ */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 32px;
+        }
+
+        /* Input card gets a primary-colored top accent to signal main action */
+        #inputCard {
+            border-top-color: rgba(99,102,241,.55);
+        }
+
+        .card-label {
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* ═══ Input ═══ */
+        .input-row { display: flex; gap: 10px; }
+
+        .input-wrap {
+            flex: 1;
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        input {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: var(--text-base);
+            padding: 13px 14px 13px 42px;
+            outline: none;
+            font-family: inherit;
+            transition:
+                border-color .22s var(--ease-out-quart),
+                box-shadow   .22s var(--ease-out-quart);
+        }
+
+        input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px var(--primary-dim);
+        }
+
+        input::placeholder { color: var(--text-muted); }
+
+        /* ═══ Buttons ═══ */
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            padding: 13px 22px;
+            font-size: var(--text-base);
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+            transition:
+                filter    .2s var(--ease-out-quart),
+                transform .15s var(--ease-out-quart);
+        }
+
+        .btn-primary:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
+        .btn-primary:active:not(:disabled) { transform: translateY(0); }
+        .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+
+        .btn-sm {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: var(--text-sm);
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color .2s, color .2s;
+        }
+
+        .btn-sm:hover { border-color: var(--violet); color: var(--violet); }
+        .btn-sm.ok { border-color: var(--success); color: var(--success); }
+
+        /* ═══ Steps ═══ */
+        .steps { display: flex; flex-direction: column; gap: 12px; }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition:
+                border-color .28s var(--ease-out-quart),
+                background   .28s var(--ease-out-quart);
+        }
+
+        .step-item.s-active  { border-color: var(--primary);  background: var(--primary-dim); }
+        .step-item.s-done    { border-color: var(--success);  background: var(--success-dim); }
+        .step-item.s-error   { border-color: var(--error);    background: var(--error-dim); }
+
+        .step-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid rgba(99,102,241,.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: oklch(55% 0.06 272);
+            flex-shrink: 0;
+            transition:
+                border-color .28s var(--ease-out-quart),
+                background   .28s var(--ease-out-quart),
+                color        .28s var(--ease-out-quart);
+        }
+
+        .s-active .step-dot  { border-color: var(--primary); color: var(--primary); }
+        .s-done   .step-dot  { border-color: var(--success); background: var(--success); color: #fff; }
+        .s-error  .step-dot  { border-color: var(--error);   background: var(--error);   color: #fff; }
+
+        .step-body { flex: 1; }
+        .step-name { font-size: var(--text-base); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; }
+        .step-hint { font-size: var(--text-sm); color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
+
+        /* Spinner */
+        .spin {
+            width: 14px; height: 14px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ═══ Result ═══ */
+        .result-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-row:last-child { border-bottom: none; }
+        .result-key { color: var(--text-muted); font-size: var(--text-sm); min-width: 96px; padding-top: 2px; flex-shrink: 0; font-weight: 500; }
+        .result-val { flex: 1; font-size: var(--text-base); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .result-val a { color: var(--primary); text-decoration: none; }
+        .result-val a:hover { text-decoration: underline; }
+        .result-val code {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            background: oklch(12% 0.06 165 / 0.4);
+            border: 1px solid rgba(61,167,120,.3);
+            border-radius: 5px;
+            padding: 2px 7px;
+            color: var(--branch);
+        }
+
+        /* ═══ Error / Notice ═══ */
+        .notice {
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            font-size: var(--text-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+
+        .notice-error   { background: var(--error-dim);   border: 1px solid rgba(248,81,73,.3);  color: #ffa198; }
+        .notice-success { background: var(--success-dim); border: 1px solid rgba(63,185,80,.3);  color: #7ee787; }
+        .notice-info    { background: var(--primary-dim); border: 1px solid rgba(99,102,241,.3); color: #a5b4fc; }
+
+        /* ═══ History ═══ */
+        .history-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .history-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition:
+                border-color .2s var(--ease-out-quart),
+                background   .2s var(--ease-out-quart),
+                transform    .2s var(--ease-out-quart);
+        }
+
+        .history-card:hover {
+            border-color: var(--primary);
+            background: oklch(14% 0.04 272);
+            transform: translateY(-2px);
+        }
+
+        .h-chip {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--violet) 100%);
+            color: #fff;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .h-info { flex: 1; min-width: 0; }
+        .h-title { font-size: var(--text-base); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .h-branch { font-size: var(--text-sm); color: var(--branch); font-family: 'SF Mono', 'Fira Code', monospace; margin-top: 3px; opacity: .85; }
+        .h-time { font-size: var(--text-xs); color: var(--text-muted); flex-shrink: 0; letter-spacing: 0.02em; }
+
+        .empty { text-align: center; padding: 28px 20px; font-size: var(--text-base); color: var(--text-muted); line-height: 1.6; }
+
+        /* ═══ Modal ═══ */
+        .overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s var(--ease-out-quart);
+        }
+
+        .overlay.open { opacity: 1; pointer-events: auto; }
+
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            width: 480px;
+            max-width: calc(100vw - 32px);
+            box-shadow: 0 24px 64px rgba(0,0,0,.6);
+            transform: translateY(16px) scale(0.98);
+            transition: transform .35s var(--ease-out-quint);
+        }
+
+        .overlay.open .modal { transform: translateY(0) scale(1); }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .modal-title { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.02em; }
+
+        .modal-close {
+            background: none; border: none;
+            color: var(--text-muted); cursor: pointer;
+            font-size: 18px; line-height: 1;
+            padding: 4px 6px; border-radius: 4px;
+            transition: color .2s;
+        }
+
+        .modal-close:hover { color: var(--text); }
+
+        .form-field { margin-bottom: 18px; }
+        .form-label { display: block; font-size: var(--text-xs); font-weight: 700; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.07em; text-transform: uppercase; }
+        .form-field input { padding: 11px 14px; font-size: var(--text-base); }
+        .form-hint { font-size: var(--text-sm); color: var(--text-muted); margin-top: 6px; line-height: 1.55; }
+
+        .modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
+
+        /* ═══ Toast ═══ */
+        #toast {
+            position: fixed; bottom: 28px; right: 28px; z-index: 400;
+            display: flex; flex-direction: column; gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast-item {
+            padding: 11px 18px;
+            border-radius: 9px;
+            font-size: var(--text-base);
+            font-weight: 500;
+            box-shadow: 0 4px 24px rgba(0,0,0,.45);
+            animation: toastIn .32s var(--ease-out-quint) both;
+            pointer-events: auto;
+        }
+
+        .toast-ok  { background: #1a3a23; border: 1px solid rgba(63,185,80,.4); color: #7ee787; }
+        .toast-err { background: #3a1a1a; border: 1px solid rgba(248,81,73,.4); color: #ffa198; }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(24px) translateY(4px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        /* ═══ Animations ═══ */
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes dotPop {
+            0%   { transform: scale(1); }
+            40%  { transform: scale(1.3); }
+            70%  { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Page load choreography — staggered reveals */
+        .hero           { animation: fadeSlideUp 0.55s var(--ease-out-quint) both; }
+        .task-flow      { animation: fadeSlideUp 0.55s var(--ease-out-quint) 0.1s both; }
+        .history-section{ animation: fadeSlideUp 0.55s var(--ease-out-quint) 0.2s both; }
+
+        /* Card entrance when shown (hidden class removed) */
+        #progressCard:not(.hidden),
+        #resultCard:not(.hidden) {
+            animation: fadeSlideDown 0.3s var(--ease-out-quint) both;
+        }
+
+        /* Step dot pop when marked done */
+        .s-done .step-dot { animation: dotPop 0.4s var(--ease-out-quart); }
+
+        /* ═══ Util ═══ */
+        .hidden { display: none !important; }
+
+        @media (max-width: 560px) {
+            .input-row { flex-direction: column; }
+            .header { padding: 0 16px; }
+            .card { padding: 20px 18px; }
+            .step-item { padding: 12px 14px; }
+            .history-card { padding: 12px 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header">
+    <a class="header-brand" href="index.html">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        <span>工作台</span>
+        <span class="badge">前端专用</span>
+    </a>
+    <div class="header-actions">
+        <a class="btn-ghost" href="index.html">← 分享站</a>
+        <button class="btn-ghost" onclick="openModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            配置
+        </button>
+    </div>
+</header>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main class="page">
+
+    <div class="hero">
+        <h1 class="hero-title">工作台</h1>
+        <p class="hero-sub">粘贴 Jira 地址，自动创建分支 · 复制前端任务单 · 钉钉通知</p>
+    </div>
+
+    <!-- 任务流：输入 → 进度 → 结果 -->
+    <div class="task-flow">
+
+        <!-- 输入卡片 -->
+        <div class="card" id="inputCard">
+            <div class="card-label">🎯 启动新需求</div>
+            <div class="input-row">
+                <div class="input-wrap">
+                    <span class="input-prefix">🔗</span>
+                    <input type="url" id="ticketInput"
+                        placeholder="粘贴 Jira Ticket 地址，例如：https://xxx.atlassian.net/browse/BRO-4570"
+                        onkeydown="if(event.key==='Enter') startTask()" />
+                </div>
+                <button class="btn-primary" id="startBtn" onclick="startTask()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    开始任务
+                </button>
+            </div>
+            <div id="noConfigTip" class="notice notice-info hidden" style="margin-top:16px;">
+                ⚠️ 请先点击右上角「配置」，填写 n8n Webhook URL 后再启动任务。
+            </div>
+        </div>
+
+        <!-- 进度卡片 -->
+        <div class="card hidden" id="progressCard">
+            <div class="card-label" id="progressLabel">⏳ 任务进行中</div>
+            <div class="steps">
+                <div class="step-item" id="step1">
+                    <div class="step-dot" id="dot1">1</div>
+                    <div class="step-body">
+                        <div class="step-name">获取 Jira 需求详情</div>
+                        <div class="step-hint" id="hint1">正在读取原始 issue 信息...</div>
+                    </div>
+                </div>
+                <div class="step-item" id="step2">
+                    <div class="step-dot" id="dot2">2</div>
+                    <div class="step-body">
+                        <div class="step-name">创建前端任务单</div>
+                        <div class="step-hint" id="hint2">在 Jira 创建 [FE] 任务并关联父级</div>
+                    </div>
+                </div>
+                <div class="step-item" id="step3">
+                    <div class="step-dot" id="dot3">3</div>
+                    <div class="step-body">
+                        <div class="step-name">创建 GitHub 功能分支</div>
+                        <div class="step-hint" id="hint3">基于 main 分支创建 feature_cxh_ 分支</div>
+                    </div>
+                </div>
+                <div class="step-item" id="step4">
+                    <div class="step-dot" id="dot4">4</div>
+                    <div class="step-body">
+                        <div class="step-name">更新 Jira 任务状态</div>
+                        <div class="step-hint" id="hint4">将新任务状态改为「正在进行」</div>
+                    </div>
+                </div>
+                <div class="step-item" id="step5">
+                    <div class="step-dot" id="dot5">5</div>
+                    <div class="step-body">
+                        <div class="step-name">发送钉钉通知</div>
+                        <div class="step-hint" id="hint5">通知团队任务已启动</div>
+                    </div>
+                </div>
+            </div>
+            <div id="errMsg" class="notice notice-error hidden" style="margin-top:16px;"></div>
+        </div>
+
+        <!-- 结果卡片 -->
+        <div class="card hidden" id="resultCard">
+            <div class="card-label">✅ 任务启动完成</div>
+            <div id="resultBody"></div>
+            <div style="margin-top:24px;">
+                <button class="btn-primary" onclick="resetTask()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    启动新任务
+                </button>
+            </div>
+        </div>
+
+    </div><!-- /.task-flow -->
+
+    <!-- 历史记录：独立区块，有节奏感分隔 -->
+    <div class="history-section">
+        <div class="card">
+            <div class="card-label">
+                <span>📋 最近任务</span>
+                <button class="btn-sm" onclick="clearHistory()">清空</button>
+            </div>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ═══════════ 配置 MODAL ═══════════ -->
+<div class="overlay" id="cfgOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+        <div class="modal-head">
+            <h2 class="modal-title">⚙️ 配置</h2>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="cfgWebhook">n8n Webhook URL <span style="color:var(--error)">*</span></label>
+            <input type="url" id="cfgWebhook" placeholder="http://152.136.168.79:5678/webhook-test/workbench" />
+            <div class="form-hint">n8n 工作流的 Webhook 触发地址（POST 方式）</div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="cfgRepo">GitHub 仓库</label>
+            <input type="text" id="cfgRepo" placeholder="owner/repo-name" />
+            <div class="form-hint">用于自动创建分支，格式：用户名/仓库名</div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="cfgJira">Jira 域名</label>
+            <input type="text" id="cfgJira" placeholder="carsome.atlassian.net" />
+            <div class="form-hint">Jira Cloud 实例域名（默认：carsome.atlassian.net）</div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-ghost" onclick="closeModal()">取消</button>
+            <button class="btn-primary" onclick="saveConfig()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                保存配置
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast 容器 -->
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════════ */
+const CFG_KEY  = 'wb_config';
+const HIST_KEY = 'wb_history';
+
+let cfg = { webhook: '', repo: '', jira: 'carsome.atlassian.net' };
+
+function loadConfig() {
+    try {
+        const raw = localStorage.getItem(CFG_KEY);
+        if (raw) { cfg = { ...cfg, ...JSON.parse(raw) }; }
+    } catch (_) {}
+}
+
+function saveConfig() {
+    cfg.webhook = document.getElementById('cfgWebhook').value.trim();
+    cfg.repo    = document.getElementById('cfgRepo').value.trim();
+    cfg.jira    = document.getElementById('cfgJira').value.trim() || 'carsome.atlassian.net';
+    localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+    closeModal();
+    toast('配置已保存 ✓');
+}
+
+/* ═══════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════ */
+function openModal() {
+    document.getElementById('cfgWebhook').value = cfg.webhook;
+    document.getElementById('cfgRepo').value    = cfg.repo;
+    document.getElementById('cfgJira').value    = cfg.jira;
+    document.getElementById('cfgOverlay').classList.add('open');
+}
+
+function closeModal() {
+    document.getElementById('cfgOverlay').classList.remove('open');
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+function toast(msg, type = 'ok') {
+    const el = document.createElement('div');
+    el.className = `toast-item toast-${type}`;
+    el.textContent = msg;
+    document.getElementById('toast').appendChild(el);
+    setTimeout(() => el.remove(), 2800);
+}
+
+/* ═══════════════════════════════════════════
+   STEP HELPERS
+═══════════════════════════════════════════ */
+function setActive(n) {
+    document.getElementById(`step${n}`).className = 'step-item s-active';
+    document.getElementById(`dot${n}`).innerHTML = '<span class="spin"></span>';
+}
+
+function setDone(n, hint) {
+    document.getElementById(`step${n}`).className = 'step-item s-done';
+    document.getElementById(`dot${n}`).textContent = '✓';
+    if (hint) { document.getElementById(`hint${n}`).textContent = hint; }
+}
+
+function setError(n) {
+    document.getElementById(`step${n}`).className = 'step-item s-error';
+    document.getElementById(`dot${n}`).textContent = '✗';
+}
+
+function resetSteps() {
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById(`step${i}`).className = 'step-item';
+        document.getElementById(`dot${i}`).textContent = String(i);
+    }
+    const hints = [
+        '正在读取原始 issue 信息...',
+        '在 Jira 创建 [FE] 任务并关联父级',
+        '基于 main 分支创建 feature_cxh_ 分支',
+        '将新任务状态改为「正在进行」',
+        '通知团队任务已启动',
+    ];
+    hints.forEach((h, i) => { document.getElementById(`hint${i + 1}`).textContent = h; });
+    document.getElementById('errMsg').classList.add('hidden');
+    document.getElementById('progressLabel').textContent = '⏳ 任务进行中';
+}
+
+/* ═══════════════════════════════════════════
+   MAIN TASK
+═══════════════════════════════════════════ */
+let running = false;
+
+function parseKey(url) {
+    const m = url.match(/browse\/([A-Z]+-\d+)/i);
+    return m ? m[1].toUpperCase() : null;
+}
+
+async function startTask() {
+    if (running) { return; }
+
+    const url = document.getElementById('ticketInput').value.trim();
+    if (!url) { toast('请输入 Jira Ticket 地址', 'err'); return; }
+
+    const key = parseKey(url);
+    if (!key) { toast('无法解析 Ticket ID，请检查地址格式', 'err'); return; }
+
+    if (!cfg.webhook) {
+        document.getElementById('noConfigTip').classList.remove('hidden');
+        openModal();
+        return;
+    }
+
+    document.getElementById('noConfigTip').classList.add('hidden');
+    running = true;
+    document.getElementById('startBtn').disabled = true;
+
+    // Show progress card, hide result
+    resetSteps();
+    document.getElementById('progressCard').classList.remove('hidden');
+    document.getElementById('resultCard').classList.add('hidden');
+
+    setActive(1);
+
+    // Simulate visual step progression while the webhook processes
+    const stepDelay = [0, 1400, 2800, 4200, 5600];
+    stepDelay.forEach((delay, i) => {
+        if (i === 0) { return; }
+        setTimeout(() => {
+            if (!running) { return; }
+            setDone(i);
+            if (i < 5) { setActive(i + 1); }
+        }, delay);
+    });
+
+    try {
+        const res = await fetch(cfg.webhook, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ticketUrl: url,
+                ticketKey: key,
+                jiraBase: cfg.jira,
+                repo: cfg.repo,
+            }),
+        });
+
+        if (!res.ok) {
+            throw new Error(`n8n 返回 HTTP ${res.status}：${res.statusText}`);
+        }
+
+        const data = await res.json();
+
+        // Mark all done
+        for (let i = 1; i <= 5; i++) { setDone(i); }
+        document.getElementById('progressLabel').textContent = '✅ 全部完成';
+
+        await sleep(400);
+        showResult(data);
+        addHistory(data);
+
+    } catch (err) {
+        setError(getCurrentActiveStep());
+        const el = document.getElementById('errMsg');
+        el.classList.remove('hidden');
+        el.innerHTML = `⚠️ ${err.message || '请求失败，请检查 n8n Webhook 配置'}`;
+        document.getElementById('progressLabel').textContent = '❌ 任务失败';
+        toast('任务失败，请查看错误信息', 'err');
+    } finally {
+        running = false;
+        document.getElementById('startBtn').disabled = false;
+    }
+}
+
+function getCurrentActiveStep() {
+    for (let i = 5; i >= 1; i--) {
+        if (document.getElementById(`step${i}`).classList.contains('s-active')) { return i; }
+    }
+    return 1;
+}
+
+function showResult(data) {
+    document.getElementById('progressCard').classList.add('hidden');
+    document.getElementById('resultCard').classList.remove('hidden');
+
+    const jiraBase = cfg.jira;
+    const origUrl = data.originalTicketUrl || `https://${jiraBase}/browse/${data.originalTicket}`;
+    const newUrl  = data.newTicketUrl      || `https://${jiraBase}/browse/${data.newTicket}`;
+
+    document.getElementById('resultBody').innerHTML = `
+        <div class="result-row">
+            <span class="result-key">原始需求</span>
+            <span class="result-val">
+                <a href="${origUrl}" target="_blank" rel="noopener">${data.originalTicket || '-'}</a>
+                <span style="color:var(--text-muted);font-size:13px;">${escHtml(data.originalSummary || '')}</span>
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-key">前端任务单</span>
+            <span class="result-val">
+                <a href="${newUrl}" target="_blank" rel="noopener">${data.newTicket || '-'}</a>
+                <span style="color:var(--text-muted);font-size:13px;">${escHtml(data.newSummary || '')}</span>
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-key">功能分支</span>
+            <span class="result-val">
+                <code>${escHtml(data.branch || '-')}</code>
+                <button class="btn-sm" onclick="copyText('${escAttr(data.branch || '')}', this)">复制</button>
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-key">父级关联</span>
+            <span class="result-val" style="color:var(--text-muted);">${escHtml(data.parentKey || '无')}</span>
+        </div>
+        <div class="result-row">
+            <span class="result-key">Jira 状态</span>
+            <span class="result-val" style="color:var(--success);">已更新为「正在进行」</span>
+        </div>
+    `;
+}
+
+function resetTask() {
+    document.getElementById('resultCard').classList.add('hidden');
+    document.getElementById('progressCard').classList.add('hidden');
+    document.getElementById('ticketInput').value = '';
+    resetSteps();
+    document.getElementById('ticketInput').focus();
+}
+
+/* ═══════════════════════════════════════════
+   HISTORY
+═══════════════════════════════════════════ */
+function addHistory(data) {
+    try {
+        const list = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+        list.unshift({ ...data, _time: new Date().toLocaleString('zh-CN') });
+        localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(0, 15)));
+        renderHistory();
+    } catch (_) {}
+}
+
+function renderHistory() {
+    const list = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+    const container = document.getElementById('historyList');
+
+    if (!list.length) {
+        container.innerHTML = '<div class="empty">暂无启动记录</div>';
+        return;
+    }
+
+    container.innerHTML = list.map(item => {
+        const url = item.newTicketUrl || `https://${cfg.jira}/browse/${item.newTicket}`;
+        return `
+            <div class="history-card" onclick="window.open('${escAttr(url)}','_blank')">
+                <span class="h-chip">${escHtml(item.newTicket || '?')}</span>
+                <div class="h-info">
+                    <div class="h-title">${escHtml(item.newSummary || item.originalSummary || '未知需求')}</div>
+                    <div class="h-branch">🌿 ${escHtml(item.branch || '-')}</div>
+                </div>
+                <span class="h-time">${escHtml(item._time || '')}</span>
+            </div>`;
+    }).join('');
+}
+
+function clearHistory() {
+    if (!confirm('确定清空所有历史记录？')) { return; }
+    localStorage.removeItem(HIST_KEY);
+    renderHistory();
+}
+
+/* ═══════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════ */
+function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✓ 已复制';
+        btn.classList.add('ok');
+        setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('ok'); }, 1600);
+    }).catch(() => toast('复制失败', 'err'));
+}
+
+function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function escAttr(s) { return String(s).replace(/'/g, '&#39;'); }
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+loadConfig();
+renderHistory();
+document.getElementById('ticketInput').focus();
+</script>
+</body>
+</html>
