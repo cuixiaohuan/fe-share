@@ -1,4 +1,4 @@
-﻿* {
+* {
 	margin: 0;
 	padding: 0;
 	Font-family: "Microsoft YaHei", 微软雅黑, Tahoma,Arial,sans-serif;
@@ -208,6 +208,28 @@ body {
 #top_header .menu_highlight {
 	background: #3668c9 !important;
 	 /* #D00505 !important; */
+}
+#top_header .header_workbench {
+	background: none repeat scroll 0 0 #6366f1;
+	font-weight: bold;
+	right: 0;
+	padding: 10px 14px;
+	position: fixed;
+	top: 0;
+	width: auto;
+	text-align: center;
+	padding-top: 5px;
+	border-radius: 0 0 0 8px;
+}
+#top_header .header_workbench:hover {
+	background: none repeat scroll 0 0 #818cf8;
+}
+#top_header .header_workbench a {
+	color: #fff;
+	display: block;
+	margin: 0 6px;
+	text-decoration: none;
+	font-size: 14px;
 }
 /*Top Header End*/
 /*Step Common*/

@@ -1,0 +1,18 @@
+
+#!/bin/sh
+
+BRANCH_NAME=$(git branch --show-current)
+
+# 1. 排除不需要校验的基础分支
+if [ "$BRANCH_NAME" = "main" ] || [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "release" ]; then
+  exit 0
+fi
+
+# 2. 正则校验：必须包含 '_' 并且以数字结尾 (例如 feature_test-demo_3123)
+if ! echo "$BRANCH_NAME" | grep -qE '_[0-9]+$'; then
+  echo "❌ 错误: 分支名 '$BRANCH_NAME' 不符合规范！"
+  echo "👉 规范要求: 必须以 '_' 加上 Ticket 编号结尾，例如 feature_test-demo_3123"
+  exit 1 # 返回非 0 状态码，强行终止 git push
+fi
+
+exit 0
